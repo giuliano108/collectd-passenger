@@ -92,8 +92,32 @@ use constant HEADER_SIZE        => 2;
 use constant DELIMITER          => "\0";
 use constant UINT16_PACK_FORMAT => "n";
 use constant UINT32_PACK_FORMAT => "N";
+use constant TMPDIR             => '/tmp';
 
-my $generation_path = "/tmp/passenger.1.0.9877/generation-0";
+my @dirs = glob TMPDIR."/passenger.*";
+my $pid = 0;
+my $path = '';
+foreach my $dir (@dirs) {
+	if (-r "$dir/control_process.pid") {
+		my $fh;
+		open $fh, "<$dir/control_process.pid" or die;
+		$pid = <$fh>;
+		chomp $pid;
+		close $fh;
+		$path = $dir;
+	} else {
+		$dir =~ /passenger\.\d+\.\d+\.(\d+)\Z/;
+		$pid = $1;
+		$path = $dir;
+	}
+}
+die unless defined $pid and $pid > 0;
+die unless kill 0, $pid;
+
+my $highest_generation = -1;
+my @gens = glob "$path/generation-*";
+map {/generation-(\d+)/; my $g = $1; $highest_generation = $g if $g > $highest_generation} @gens;
+my $generation_path = "$path/generation-$highest_generation";
 
 # phusion_passenger/message_channel.rb
 # MessageChannel.write_scalar
