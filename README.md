@@ -10,7 +10,7 @@ Tested on Ubuntu 10.04 LTS (i386 and amd64), collectd 4.8.2-1, Phusion Passenger
 Collected global metrics 
 ------------------------
 
-See also the Passenger/nginx [guide](http://www.modrails.com/documentation/Users%20guide%20Nginx.html)).
+See also the Passenger/nginx [guide](http://www.modrails.com/documentation/Users%20guide%20Nginx.html).
 
 * `active` - The number of application instances that are currently processing requests. This value is always less than or equal to count.
 * `count` - The number of application instances that are currently alive. This value is always less than or equal to max. 
