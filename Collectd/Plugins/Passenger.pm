@@ -1,5 +1,5 @@
 # Phusion Passenger collectd plugin
-# Author: Giuliano Cioffi <giuliano@108.bz>
+# Author: Giuliano Cioffi <giuliano at 108.bz>
 
 package Collectd::Plugins::Passenger;
 

@@ -1,6 +1,6 @@
 # Inspects Phusion Passenger’s internal status by querying its socket interface.
 # Supports Passenger 3.
-# Author: Giuliano Cioffi <giuliano@108.bz>
+# Author: Giuliano Cioffi <giuliano at 108.bz>
 
 package PassengerStatus;
 
