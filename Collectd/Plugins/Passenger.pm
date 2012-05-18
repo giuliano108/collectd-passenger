@@ -20,7 +20,7 @@ sub get_values($$;$) {
     my ($values, $type, $plugin_instance) = @_;
     my $v = {
         plugin        => 'passenger',
-		type          => $type,
+        type          => $type,
         values        => $values
     };
     $v->{plugin_instance} = sanitize_instance_name($plugin_instance) if $plugin_instance;
@@ -85,11 +85,11 @@ sub passenger_read  {
     my ($global_groups_count, $global_processes_count, $global_requests) = (0,0,0);
     my $groups = $status->{info}->{groups}->{group};
     $groups = [$groups] unless ref $groups eq 'ARRAY';
-	foreach my $group (@$groups) {
-		my $app_name = $group->{name};
-		my $processes = $group->{processes}->{process};
-		$processes = [$processes] unless ref $processes eq 'ARRAY';
-		my @totals = ((0) x scalar(@per_group_dataset_memory_keys));
+    foreach my $group (@$groups) {
+        my $app_name = $group->{name};
+        my $processes = $group->{processes}->{process};
+        $processes = [$processes] unless ref $processes eq 'ARRAY';
+        my @totals = ((0) x scalar(@per_group_dataset_memory_keys));
         my ($processes_count,$sessions,$requests) = (0,0,0);
         foreach my $process (@$processes) {
              foreach my $i (0..$#per_group_dataset_memory_keys) {

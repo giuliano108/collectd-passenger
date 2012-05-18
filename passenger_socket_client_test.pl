@@ -1,7 +1,8 @@
+#!/usr/bin/perl
+
 # "passenger-status" equivalent.
 # Author: Giuliano Cioffi <giuliano at 108.bz>
 
-#!/usr/bin/perl
 use strict;
 use File::Basename;
 BEGIN { push @INC, dirname($0); }
