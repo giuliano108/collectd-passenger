@@ -16,8 +16,8 @@ See also the Passenger/nginx [guide](http://www.modrails.com/documentation/Users
 * `count` - The number of application instances that are currently alive. This value is always less than or equal to max. 
 * `max` - The maximum number of application instances that Phusion Passenger will spawn. This equals the value given for `PassengerMaxPoolSize` (Apache) or `passenger_max_pool_size` (Nginx). 
 * `global_queue_size` - how many connections are sitting in the global queue (if enabled), waiting to be served.
-* `groups` - number of applications (not application instances) that are currently in memory.
-* `processes` - sum of all the application instances, as counted by the plugin. Should always be equal to `active`
+* `groups` - total number of applications currently loaded in memory.
+* `processes` - total number of application instances currently loaded in memory.
 
 * `processed` - total number of requests being served per second.
 
