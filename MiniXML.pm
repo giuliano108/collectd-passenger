@@ -1,9 +1,10 @@
+# Minimal XML parser.
+# Author: Giuliano Cioffi <giuliano@108.bz>
+
 package MiniXML;
 
 use strict;
 
-# Minimal XML parser.
-# Author: Giuliano Cioffi <giuliano@108.bz>
 # ShallowParser (taken from http://www.cs.sfu.ca/~cameron/REX.html#AppA) turns
 # XML into a list of tokens. ToTree transforms the list into a parse tree.
 

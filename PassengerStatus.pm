@@ -1,11 +1,11 @@
+# Inspects Phusion Passenger’s internal status by querying its socket interface.
+# Supports Passenger 3.
+# Author: Giuliano Cioffi <giuliano@108.bz>
+
 package PassengerStatus;
 
 use strict;
 use IO::Socket::UNIX;
-
-# Inspects Phusion Passenger’s internal status by querying its socket interface.
-# Supports Passenger 3.
-# Author: Giuliano Cioffi <giuliano@108.bz>
 
 use constant HEADER_SIZE        => 2;
 use constant DELIMITER          => "\0";
@@ -164,7 +164,7 @@ sub message_client_xml($) {
         $buffer .= $tmp;
     }
     my $size = (unpack UINT32_PACK_FORMAT, $buffer)[0];
-    return '' if $size == 0;
+    return error(E_SOCKREAD) if $size == 0;
 
     $tmp = '';
     return error(E_SOCKREAD) unless $sock->read($buffer,$size);

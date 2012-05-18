@@ -1,0 +1,6 @@
+global_processes               active:GAUGE:0:65535, count:GAUGE:0:65535, max:GAUGE:0:65535, global_queue_size:GAUGE:0:65535, groups:GAUGE:0:65535, processes:GAUGE:0:65535
+global_requests                processed:COUNTER:0:U
+per_group_memory               private_dirty:GAUGE:0:4294967295, pss:GAUGE:0:4294967295, real_memory:GAUGE:0:4294967295, rss:GAUGE:0:4294967295, swap:GAUGE:0:4294967295, vmsize:GAUGE:0:4294967295
+per_group_processes            processes:GAUGE:0:4294967295
+per_group_sessions             sessions:GAUGE:0:4294967295
+per_group_requests             processed:COUNTER:0:U
