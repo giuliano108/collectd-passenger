@@ -40,7 +40,7 @@ my $global_dataset_processes = [
 my @global_dataset_processes_keys = qw/active count max global_queue_size/;
 
 my $global_dataset_requests = [
-    {name => 'processed'        , type => DS_TYPE_COUNTER, min => 0, max => undef}
+    {name => 'processed'        , type => DS_TYPE_DERIVE, min => 0, max => 65535}
 ];
 
 my $per_group_dataset_memory = [
@@ -63,13 +63,13 @@ my $per_group_dataset_sessions = [
 ];
 
 my $per_group_dataset_requests = [
-    {name => 'processed'        , type => DS_TYPE_COUNTER, min => 0, max => undef}
+    {name => 'processed'        , type => DS_TYPE_DERIVE, min => 0, max => 65535}
 ];
 
 sub dataset_to_typedb($$) {
     my ($name,$defs) = @_;
     my $s = sprintf "%-30s", $name;
-    my %type_map = (&DS_TYPE_GAUGE=>'GAUGE', &DS_TYPE_COUNTER=>'COUNTER');
+    my %type_map = (&DS_TYPE_GAUGE=>'GAUGE', &DS_TYPE_DERIVE=>'DERIVE', &DS_TYPE_COUNTER=>'COUNTER');
     sub mm {my $v = shift; defined $v ? $v : 'U'}
     return sprintf "%-30s %s\n", ($name), (join ', ', map { "$_->{name}:$type_map{$_->{type}}:${\(mm($_->{min}))}:${\(mm($_->{max}))}" } @$defs);
 }
