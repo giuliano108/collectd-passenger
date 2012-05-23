@@ -29,6 +29,9 @@ sub get_values($$;$) {
 
 my $logged_events_count = 0;
 
+# Oddly, DS_TYPE_DERIVE is not exported in Collectd.pm...
+use constant DS_TYPE_DERIVE => Collectd::DS_TYPE_DERIVE;
+
 my $global_dataset_processes = [
     {name => 'active'           , type => DS_TYPE_GAUGE  , min => 0, max => 65535},
     {name => 'count'            , type => DS_TYPE_GAUGE  , min => 0, max => 65535},
